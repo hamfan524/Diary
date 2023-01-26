@@ -8,8 +8,10 @@
 import UIKit
 
 class TableViewController: UIViewController {
-
+    static let identifier = "TableViewController"
     lazy var tableView = TableView()
+    
+    var diaryEntries: [DiaryEntry] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,7 @@ class TableViewController: UIViewController {
         
         autoLayout()
         configureUI()
-
+        
     }
 }
 
@@ -49,29 +51,33 @@ extension TableViewController{
             action: #selector(openDiaryView)
         )
     }
-    
+    // 화면 전환
     @objc private func openDiaryView(){
         let diaryViewController = DiaryViewController()
-        // 화면 전환
+        diaryViewController.tableViewController = self
         diaryViewController.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(diaryViewController, animated: true)
     }
     
 }
 
+// MARK: Extension UITableView
 extension TableViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return diaryEntries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else { return UITableViewCell()}
-        cell.titleLabel.text = "\(indexPath.row)"
+
+        let diaryEntry = diaryEntries[indexPath.row]
+        cell.titleLabel.text = diaryEntry.title
         return cell
     }
     
 }
 
+// MARK: SwiftUI Preview
 #if DEBUG
 import SwiftUI
 struct ViewControllerRepresentable: UIViewControllerRepresentable
