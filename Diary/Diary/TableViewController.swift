@@ -11,7 +11,7 @@ class TableViewController: UIViewController {
     static let identifier = "TableViewController"
     lazy var tableView = TableView()
     
-    var diaryEntries: [DiaryEntry] = []
+    var diaryEntities: [DiaryEntity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +64,14 @@ extension TableViewController{
 // MARK: Extension UITableView
 extension TableViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diaryEntries.count
+        return diaryEntities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else { return UITableViewCell()}
 
-        let diaryEntry = diaryEntries[indexPath.row]
-        cell.titleLabel.text = diaryEntry.title
+        let diaryEntity = diaryEntities[indexPath.row]
+        cell.titleLabel.text = diaryEntity.title
         return cell
     }
     

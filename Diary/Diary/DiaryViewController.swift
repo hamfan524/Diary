@@ -46,14 +46,13 @@ class DiaryViewController: UIViewController{
 extension DiaryViewController{
     override func viewWillDisappear(_ animated: Bool) {
         //Make Entry
-        var diaryEntry = DiaryEntry()
-        diaryEntry.date = diaryView.datePicker.date
-        diaryEntry.title = diaryView.titleTextView.text
-        diaryEntry.content = diaryView.contentTextView.text
+        let diaryEntity = DiaryEntity()
+        diaryEntity.date = diaryView.datePicker.date
+        diaryEntity.title = diaryView.titleTextView.text
+        diaryEntity.content = diaryView.contentTextView.text
         
         //Add entry tableview array
-        tableViewController?.diaryEntries.append(diaryEntry)
+        tableViewController?.diaryEntities.append(diaryEntity)
         tableViewController?.tableView.reloadData()
-        
     }
 }
