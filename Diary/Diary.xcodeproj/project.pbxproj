@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		418F9F572982B09E00D315D6 /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F9F562982B09E00D315D6 /* DiaryEntry.swift */; };
 		419F484729817980001830C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F484629817980001830C8 /* AppDelegate.swift */; };
 		419F484929817980001830C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F484829817980001830C8 /* SceneDelegate.swift */; };
-		419F484B29817980001830C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F484A29817980001830C8 /* ViewController.swift */; };
+		419F484B29817980001830C8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F484A29817980001830C8 /* TableViewController.swift */; };
 		419F484E29817980001830C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419F484C29817980001830C8 /* Main.storyboard */; };
 		419F485129817980001830C8 /* Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 419F484F29817980001830C8 /* Diary.xcdatamodeld */; };
 		419F485329817981001830C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419F485229817981001830C8 /* Assets.xcassets */; };
@@ -42,10 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		418F9F562982B09E00D315D6 /* DiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntry.swift; sourceTree = "<group>"; };
 		419F484329817980001830C8 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		419F484629817980001830C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		419F484829817980001830C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		419F484A29817980001830C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		419F484A29817980001830C8 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		419F484D29817980001830C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		419F485029817980001830C8 /* Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Diary.xcdatamodel; sourceTree = "<group>"; };
 		419F485229817981001830C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,11 +115,12 @@
 			children = (
 				419F484629817980001830C8 /* AppDelegate.swift */,
 				419F484829817980001830C8 /* SceneDelegate.swift */,
-				419F484A29817980001830C8 /* ViewController.swift */,
+				419F484A29817980001830C8 /* TableViewController.swift */,
 				419F487E29818C97001830C8 /* TableViewCell.swift */,
 				419F487C29818A22001830C8 /* TableView.swift */,
 				419F48832981A083001830C8 /* DiaryViewController.swift */,
 				419F48852981A2E9001830C8 /* DiaryView.swift */,
+				418F9F562982B09E00D315D6 /* DiaryEntry.swift */,
 				419F484C29817980001830C8 /* Main.storyboard */,
 				419F485229817981001830C8 /* Assets.xcassets */,
 				419F485429817981001830C8 /* LaunchScreen.storyboard */,
@@ -281,11 +284,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				419F484B29817980001830C8 /* ViewController.swift in Sources */,
+				419F484B29817980001830C8 /* TableViewController.swift in Sources */,
 				419F487D29818A22001830C8 /* TableView.swift in Sources */,
 				419F484729817980001830C8 /* AppDelegate.swift in Sources */,
 				419F48842981A083001830C8 /* DiaryViewController.swift in Sources */,
 				419F487F29818C97001830C8 /* TableViewCell.swift in Sources */,
+				418F9F572982B09E00D315D6 /* DiaryEntry.swift in Sources */,
 				419F484929817980001830C8 /* SceneDelegate.swift in Sources */,
 				419F48862981A2E9001830C8 /* DiaryView.swift in Sources */,
 				419F485129817980001830C8 /* Diary.xcdatamodeld in Sources */,

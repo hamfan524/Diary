@@ -25,11 +25,11 @@ class DiaryView: UIView{
         textView.textColor = .black
         textView.font = .boldSystemFont(ofSize: 30)
         textView.text = "제목"
-        textView.textAlignment = .center
+        textView.textAlignment = .left
         return textView
     }()
     
-    lazy var mainTextView: UITextView = {
+    lazy var contentTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = .black
         textView.font = .systemFont(ofSize: 20)
@@ -53,7 +53,7 @@ class DiaryView: UIView{
         
         addSubview(datePicker)
         addSubview(titleTextView)
-        addSubview(mainTextView)
+        addSubview(contentTextView)
         datePicker.snp.makeConstraints { make in
             make.top.equalTo(safeArea.snp.top).offset(25)
             make.centerX.equalTo(safeArea.snp.centerX)
@@ -66,7 +66,7 @@ class DiaryView: UIView{
             make.height.equalTo(50)
         }
         
-        mainTextView.snp.makeConstraints { make in
+        contentTextView.snp.makeConstraints { make in
             make.top.equalTo(titleTextView.snp.bottom).offset(20)
             make.leading.equalTo(safeArea.snp.leading).offset(25)
             make.trailing.equalTo(safeArea.snp.trailing).offset(-25)
