@@ -23,6 +23,14 @@ class TableViewController: UIViewController {
         configureUI()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext{
+            if let dataFromCoreData = try? context.fetch(DiaryEntity.fetchRequest()) as? [DiaryEntity]{
+                diaryEntities = dataFromCoreData
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 
 // MARK: UI & Action
@@ -51,14 +59,18 @@ extension TableViewController{
             action: #selector(openDiaryView)
         )
     }
-    // 화면 전환
+    // 새 일기장 열기
     @objc private func openDiaryView(){
-        let diaryViewController = DiaryViewController()
-        diaryViewController.tableViewController = self
-        diaryViewController.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(diaryViewController, animated: true)
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext{
+            let newDiaryEntity = DiaryEntity(context: context)
+            newDiaryEntity.date = .now
+            newDiaryEntity.title = "제목"
+            newDiaryEntity.content = "내용"
+            let diaryViewController = DiaryViewController(DiaryInfo: newDiaryEntity)
+            diaryViewController?.modalPresentationStyle = .fullScreen
+            navigationController?.pushViewController(diaryViewController!, animated: true)
+        }
     }
-    
 }
 
 // MARK: Extension UITableView
@@ -75,7 +87,15 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedDiary = diaryEntities[indexPath.row]
+        guard let diaryViewController = DiaryViewController(DiaryInfo: selectedDiary) else { return }
+        
+        navigationController?.pushViewController(diaryViewController, animated: true)
+    }
+    
 }
+
 
 // MARK: SwiftUI Preview
 #if DEBUG
@@ -102,4 +122,3 @@ struct ViewController_Previews: PreviewProvider{
 }
 
 #endif
-

@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 class DiaryView: UIView{
+    private var diaryEntity: DiaryEntity
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .automatic
@@ -24,7 +25,7 @@ class DiaryView: UIView{
         let textView = UITextView()
         textView.textColor = .black
         textView.font = .boldSystemFont(ofSize: 30)
-        textView.text = "제목"
+        textView.text = diaryEntity.title
         textView.textAlignment = .left
         return textView
     }()
@@ -33,13 +34,14 @@ class DiaryView: UIView{
         let textView = UITextView()
         textView.textColor = .black
         textView.font = .systemFont(ofSize: 20)
-        textView.text = "본문"
+        textView.text = diaryEntity.content
         textView.textAlignment = .left
         return textView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(DiaryInfo: DiaryEntity) {
+        self.diaryEntity = DiaryInfo
+        super.init(frame: .zero)
         autoLayout()
     }
     @available(*, unavailable)

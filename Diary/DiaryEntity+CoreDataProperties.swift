@@ -1,5 +1,5 @@
 //
-//  DiaryEntry+CoreDataProperties.swift
+//  DiaryEntity+CoreDataProperties.swift
 //  Diary
 //
 //  Created by 최동호 on 2023/01/27.
@@ -13,7 +13,7 @@ import CoreData
 extension DiaryEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<DiaryEntity> {
-        return NSFetchRequest<DiaryEntity>(entityName: "DiaryEntry")
+        return NSFetchRequest<DiaryEntity>(entityName: "DiaryEntity")
     }
     
     @NSManaged public var date: Date?
