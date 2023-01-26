@@ -19,29 +19,44 @@ class TableViewController: UIViewController {
         
         autoLayout()
         configureUI()
-        
-        // autoHeight
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+
     }
-    
+}
+
+// MARK: UI & Action
+extension TableViewController{
     private func autoLayout(){
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(self.view)
         }
+        
+        // autoHeight
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
-    
-    func configureUI(){
-        navigationItem.title = "Diary List"
+    private func configureUI(){
+        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        navigationItem.title = "Diary"
         navigationItem.backButtonTitle = "Back"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "pencil"),
+            image: UIImage(systemName: "square.and.pencil"),
             style: .plain,
-            target: nil,
-            action: nil
+            target: self,
+            action: #selector(openDiaryView)
         )
     }
+    
+    @objc private func openDiaryView(){
+        let diaryViewController = DiaryViewController()
+        // 화면 전환
+        diaryViewController.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(diaryViewController, animated: true)
+    }
+    
 }
 
 extension TableViewController: UITableViewDelegate, UITableViewDataSource{
@@ -51,10 +66,9 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else { return UITableViewCell()}
-            
+        cell.titleLabel.text = "\(indexPath.row)"
         return cell
     }
-    
     
 }
 
