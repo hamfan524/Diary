@@ -12,7 +12,6 @@
 		419F484729817980001830C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F484629817980001830C8 /* AppDelegate.swift */; };
 		419F484929817980001830C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F484829817980001830C8 /* SceneDelegate.swift */; };
 		419F484B29817980001830C8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F484A29817980001830C8 /* TableViewController.swift */; };
-		419F484E29817980001830C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419F484C29817980001830C8 /* Main.storyboard */; };
 		419F485129817980001830C8 /* Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 419F484F29817980001830C8 /* Diary.xcdatamodeld */; };
 		419F485329817981001830C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419F485229817981001830C8 /* Assets.xcassets */; };
 		419F485629817981001830C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419F485429817981001830C8 /* LaunchScreen.storyboard */; };
@@ -50,7 +49,6 @@
 		419F484629817980001830C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		419F484829817980001830C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		419F484A29817980001830C8 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		419F484D29817980001830C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		419F485029817980001830C8 /* Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Diary.xcdatamodel; sourceTree = "<group>"; };
 		419F485229817981001830C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		419F485529817981001830C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,11 +90,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		412BBECB2983AEC400316ADF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				419F48832981A083001830C8 /* DiaryViewController.swift */,
+				419F484A29817980001830C8 /* TableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		412BBECC2983B0D700316ADF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				419F485429817981001830C8 /* LaunchScreen.storyboard */,
+				419F484629817980001830C8 /* AppDelegate.swift */,
+				419F484829817980001830C8 /* SceneDelegate.swift */,
+				419F485729817981001830C8 /* Info.plist */,
+				419F485229817981001830C8 /* Assets.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		412BBECD2983B0F200316ADF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				419F484F29817980001830C8 /* Diary.xcdatamodeld */,
+				418F9F582982F67500D315D6 /* DiaryEntity+CoreDataClass.swift */,
+				418F9F592982F67500D315D6 /* DiaryEntity+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		41957F152983ADC400907A1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				419F487C29818A22001830C8 /* TableView.swift */,
+				419F487E29818C97001830C8 /* TableViewCell.swift */,
+				419F48852981A2E9001830C8 /* DiaryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		419F483A29817980001830C8 = {
 			isa = PBXGroup;
 			children = (
-				418F9F582982F67500D315D6 /* DiaryEntity+CoreDataClass.swift */,
-				418F9F592982F67500D315D6 /* DiaryEntity+CoreDataProperties.swift */,
 				419F484529817980001830C8 /* Diary */,
 				419F485F29817981001830C8 /* DiaryTests */,
 				419F486929817981001830C8 /* DiaryUITests */,
@@ -117,18 +154,10 @@
 		419F484529817980001830C8 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				419F484629817980001830C8 /* AppDelegate.swift */,
-				419F484829817980001830C8 /* SceneDelegate.swift */,
-				419F484A29817980001830C8 /* TableViewController.swift */,
-				419F487E29818C97001830C8 /* TableViewCell.swift */,
-				419F487C29818A22001830C8 /* TableView.swift */,
-				419F48832981A083001830C8 /* DiaryViewController.swift */,
-				419F48852981A2E9001830C8 /* DiaryView.swift */,
-				419F484C29817980001830C8 /* Main.storyboard */,
-				419F485229817981001830C8 /* Assets.xcassets */,
-				419F485429817981001830C8 /* LaunchScreen.storyboard */,
-				419F485729817981001830C8 /* Info.plist */,
-				419F484F29817980001830C8 /* Diary.xcdatamodeld */,
+				412BBECC2983B0D700316ADF /* App */,
+				412BBECB2983AEC400316ADF /* Controller */,
+				41957F152983ADC400907A1E /* View */,
+				412BBECD2983B0F200316ADF /* CoreData */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -262,7 +291,6 @@
 			files = (
 				419F485629817981001830C8 /* LaunchScreen.storyboard in Resources */,
 				419F485329817981001830C8 /* Assets.xcassets in Resources */,
-				419F484E29817980001830C8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,14 +361,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		419F484C29817980001830C8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				419F484D29817980001830C8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		419F485429817981001830C8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -475,7 +495,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UAG934M4Q7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Diary/Info.plist;
+				INFOPLIST_FILE = Diary/APP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -503,7 +523,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UAG934M4Q7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Diary/Info.plist;
+				INFOPLIST_FILE = Diary/APP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

@@ -33,6 +33,7 @@ class DiaryViewController: UIViewController{
         super.viewDidLoad()
         configureUI()
         setData()
+       
     }
    
 }
@@ -59,35 +60,42 @@ extension DiaryViewController{
 }
 
 // MARK: About Data
-extension DiaryViewController{
+extension DiaryViewController: UITextViewDelegate{
     override func viewWillDisappear(_ animated: Bool) {
-        //Make Entity
-        if diaryEntity == nil {
-            if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext{
-                let diaryEntity = DiaryEntity(context: context)
-                diaryEntity.date = diaryView.datePicker.date
-                diaryEntity.title = diaryView.titleTextView.text
-                diaryEntity.content = diaryView.contentTextView.text
-            }
-        }
-        diaryEntity?.date = diaryView.datePicker.date
-        diaryEntity?.title = diaryView.titleTextView.text
-        diaryEntity?.content = diaryView.contentTextView.text
-        
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
     func setData(){
         if diaryEntity == nil {
-            //create entity
-            
-        }else{
-            //fill info
-            diaryView.titleTextView.text = diaryEntity!.title
-            diaryView.contentTextView.text = diaryEntity!.content
-            if let dateToBeDisplayed = diaryEntity!.date{
-                diaryView.datePicker.date = dateToBeDisplayed
+            if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext{
+                diaryEntity = DiaryEntity(context: context)
+                diaryEntity?.date = diaryView.datePicker.date
+                diaryEntity?.title = diaryView.titleTextView.text
+                diaryEntity?.content = diaryView.contentTextView.text
             }
         }
+        diaryView.titleTextView.text = diaryEntity?.title
+        diaryView.contentTextView.text = diaryEntity?.content
+        
+        if let dateToBeDisplayed = diaryEntity?.date{
+            diaryView.datePicker.date = dateToBeDisplayed
+        }
+        diaryView.datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
+        diaryView.titleTextView.delegate = self
+        diaryView.contentTextView.delegate = self
     }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        diaryEntity?.title = diaryView.titleTextView.text
+        diaryEntity?.content = diaryView.contentTextView.text
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+    }
+    
+    // MARK: - Selectors
+     @objc
+     private func handleDatePicker(_ sender: UIDatePicker) {
+         diaryEntity?.date = diaryView.datePicker.date
+         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+     }
+  
 }

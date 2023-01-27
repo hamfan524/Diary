@@ -17,7 +17,6 @@ class DiaryView: UIView{
         datePicker.datePickerMode = .date
         datePicker.locale = Locale(identifier: "ko-KR")
         datePicker.timeZone = .autoupdatingCurrent
-        datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
         return datePicker
     }()
 
@@ -76,10 +75,5 @@ class DiaryView: UIView{
         }
     }
     
-    // MARK: - Selectors
-     @objc
-     private func handleDatePicker(_ sender: UIDatePicker) {
-         print(sender.date)
-     }
-  
+
 }
