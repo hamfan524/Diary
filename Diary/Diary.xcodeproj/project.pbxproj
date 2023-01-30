@@ -164,11 +164,11 @@
 		419F484529817980001830C8 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				4140649029880C73000B5162 /* Util */,
 				412BBECC2983B0D700316ADF /* App */,
 				412BBECB2983AEC400316ADF /* Controller */,
 				41957F152983ADC400907A1E /* View */,
 				412BBECD2983B0F200316ADF /* CoreData */,
+				4140649029880C73000B5162 /* Util */,
 			);
 			path = Diary;
 			sourceTree = "<group>";

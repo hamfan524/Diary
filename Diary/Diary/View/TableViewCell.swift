@@ -33,7 +33,6 @@ class TableViewCell: UITableViewCell {
         label.text = "♥️"
         label.textColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         label.font = .titleFont
-        label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
     
@@ -61,7 +60,7 @@ class TableViewCell: UITableViewCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).offset(10)
+            make.top.bottom.equalTo(contentView)
             make.leading.equalTo(monthLabel.snp.trailing).offset(30)
             make.trailing.lessThanOrEqualTo(contentView.snp.trailing)
             
