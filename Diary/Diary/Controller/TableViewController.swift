@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import CoreData
 class TableViewController: UIViewController {
     static let identifier = "TableViewController"
     lazy var tableView = TableView()
@@ -21,11 +21,13 @@ class TableViewController: UIViewController {
         
         autoLayout()
         configureUI()
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext{
-            if let dataFromCoreData = try? context.fetch(DiaryEntity.fetchRequest()) as? [DiaryEntity]{
+            
+            let request: NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            if let dataFromCoreData = try? context.fetch(request) as? [DiaryEntity]{
                 diaryEntities = dataFromCoreData
                 self.tableView.reloadData()
             }
@@ -40,7 +42,6 @@ extension TableViewController{
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(self.view)
         }
-        
         // autoHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -83,8 +84,13 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else { return UITableViewCell()}
 
         let diaryEntity = diaryEntities[indexPath.row]
+        cell.monthLabel.text = diaryEntity.setMonth()
+        cell.dayLabel.text = diaryEntity.setDay()
         cell.titleLabel.text = diaryEntity.title
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -93,9 +99,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource{
         
         navigationController?.pushViewController(diaryViewController, animated: true)
     }
-    
 }
-
 
 // MARK: SwiftUI Preview
 #if DEBUG
