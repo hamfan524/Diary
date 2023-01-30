@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4140649229880C89000B5162 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140649129880C89000B5162 /* UIFont+Extension.swift */; };
 		418F9F5A2982F67500D315D6 /* DiaryEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F9F582982F67500D315D6 /* DiaryEntity+CoreDataClass.swift */; };
 		418F9F5B2982F67500D315D6 /* DiaryEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F9F592982F67500D315D6 /* DiaryEntity+CoreDataProperties.swift */; };
 		419F484729817980001830C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F484629817980001830C8 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4140649129880C89000B5162 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		418F9F582982F67500D315D6 /* DiaryEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		418F9F592982F67500D315D6 /* DiaryEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		419F484329817980001830C8 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		4140649029880C73000B5162 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4140649129880C89000B5162 /* UIFont+Extension.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		41957F152983ADC400907A1E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +164,7 @@
 		419F484529817980001830C8 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				4140649029880C73000B5162 /* Util */,
 				412BBECC2983B0D700316ADF /* App */,
 				412BBECB2983AEC400316ADF /* Controller */,
 				41957F152983ADC400907A1E /* View */,
@@ -325,6 +336,7 @@
 				419F484929817980001830C8 /* SceneDelegate.swift in Sources */,
 				419F48862981A2E9001830C8 /* DiaryView.swift in Sources */,
 				419F485129817980001830C8 /* Diary.xcdatamodeld in Sources */,
+				4140649229880C89000B5162 /* UIFont+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
