@@ -7,14 +7,14 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class DiaryViewController: UIViewController{
     
     private lazy var diaryView = DiaryView(DiaryInfo: diaryEntity!)
     static let identifier = "DiaryViewController"
-    
     var diaryEntity: DiaryEntity?
-    
+   
     required init?(DiaryInfo: DiaryEntity) {
         self.diaryEntity = DiaryInfo
         super.init(nibName: nil, bundle: nil)
@@ -33,9 +33,11 @@ class DiaryViewController: UIViewController{
         super.viewDidLoad()
         configureUI()
         setData()
-       
+        diaryView.contentTextView.becomeFirstResponder()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
-   
 }
 // MARK: UI & Action
 
@@ -57,6 +59,19 @@ extension DiaryViewController{
             navigationController?.popViewController(animated: true)
         }
     }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            diaryView.contentBottomConstraint?.update(inset: keyboardHeight)
+        }
+    }
+    @objc func keyboardWillHide(_notification: Notification){
+        diaryView.contentBottomConstraint?.update(offset: 25)
+    }
+    
 }
 
 // MARK: About Data

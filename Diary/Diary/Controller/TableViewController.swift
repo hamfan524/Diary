@@ -21,7 +21,6 @@ class TableViewController: UIViewController {
         
         autoLayout()
         configureUI()
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext{
@@ -40,7 +39,6 @@ extension TableViewController{
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(self.view)
         }
-        
         // autoHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -93,9 +91,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource{
         
         navigationController?.pushViewController(diaryViewController, animated: true)
     }
-    
 }
-
 
 // MARK: SwiftUI Preview
 #if DEBUG

@@ -11,6 +11,7 @@ import SnapKit
 
 class DiaryView: UIView{
     private var diaryEntity: DiaryEntity
+    var contentBottomConstraint : Constraint? = nil
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .automatic
@@ -71,9 +72,7 @@ class DiaryView: UIView{
             make.top.equalTo(titleTextView.snp.bottom).offset(20)
             make.leading.equalTo(safeArea.snp.leading).offset(25)
             make.trailing.equalTo(safeArea.snp.trailing).offset(-25)
-            make.bottom.equalTo(safeArea.snp.bottom).offset(-25)
+            self.contentBottomConstraint = make.bottom.equalTo(safeArea.snp.bottom).offset(-25).constraint
         }
     }
-    
-
 }
